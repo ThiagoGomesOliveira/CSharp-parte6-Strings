@@ -10,9 +10,10 @@ namespace ByteBank
     {
         static void Main(string[] args)
         {
-            string url = "pagina?Argumentos";
-            string argumentos = url.Substring(7);
-            Console.WriteLine(argumentos);
+            string url = "www.bytebank.com/cambio?origem=real&destino=dolar";
+            ExtratorValorDeArgumentosURL extrator = new ExtratorValorDeArgumentosURL(url);
+            string teste = extrator.GetValor("origem"); // real&destino=dolar
+            Console.WriteLine(teste);
             Console.ReadLine();
 
         }
