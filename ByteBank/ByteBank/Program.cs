@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ByteBank
@@ -10,10 +11,15 @@ namespace ByteBank
     {
         static void Main(string[] args)
         {
-            string url = "www.bytebank.com/cambio?origem=real&destino=dolar";
-            ExtratorValorDeArgumentosURL extrator = new ExtratorValorDeArgumentosURL(url);
-            string teste = extrator.GetValor("origem"); // real&destino=dolar
-            Console.WriteLine(teste);
+            //string url = "www.bytebank.com/cambio?origem=real&destino=dolar";
+            //ExtratorValorDeArgumentosURL extrator = new ExtratorValorDeArgumentosURL(url);
+            //string teste = extrator.GetValor("origem"); // real&destino=dolar
+            //Console.WriteLine(teste);
+            // string padrao = "[0123456789][0123456789][0123456789][0123456789][-][0123456789][0123456789][0123456789][0123456789]";
+            string padrao = "[0-9]{4,5}-?[0-9]{4}";
+            string texto = "Meu número é: 2342-3453";
+            Match match = Regex.Match(texto,padrao);
+            Console.WriteLine(match.Value);
             Console.ReadLine();
 
         }
